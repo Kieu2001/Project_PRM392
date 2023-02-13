@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="coffee_100">#FEF7DC</color>
+    <color name="coffee_200">#E6DDC6</color>
+    <color name="coffee_300">#C2B8A3</color>
+    <color name="coffee_400">#A19882</color>
+
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="primary">#D0FFF6</color>
+    <color name="blackMist">#81000000</color>
+    <color name="noteColorRed">#FFA8A8</color>
+    <color name="noteColorGreen">#B5FFA8</color>
+    <color name="noteColorDefault">#FFFFFFFF</color>
+    <color name="noteColor2">#faafa8</color>
+    <color name="noteColor3">#f39f76</color>
+    <color name="noteColor4">#fff8b8</color>
+    <color name="noteColor5">#e2f6d3</color>
+    <color name="noteColor6">#b4ddd3</color>
+    <color name="noteColorChooserBorder">#70777C</color>
+    <color name="noteColorChoiceIcon">#0003B3</color>
+    <color name="iconPrimary">#52575A</color>
+    <color name="textBoxGray">#DDDDDD</color>
+    <color name="buttonBlack">#757575</color>
+    <color name="selectedItem">#79B5B4</color>
+    <color name="premium">#FFC107</color>
+    <color name="floral_white">#FCF7F3</color>
+</resources>
