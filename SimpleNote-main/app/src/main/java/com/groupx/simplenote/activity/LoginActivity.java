@@ -91,5 +91,5 @@ public class LoginActivity extends AppCompatActivity {
 //                startActivity(new Intent(LoginActivity.this, ForgotPassWordActivity.class));
 //            }
 //        });
-    }
+    } //Modify Nav-bar menu.
 }
