@@ -18,6 +18,7 @@ import com.groupx.simplenote.R;
 import java.util.Locale;
 
 public class LogoActivity extends AppCompatActivity {
+    //NewLogo
     private static int SPLASH_TIME_OUT = 1000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
