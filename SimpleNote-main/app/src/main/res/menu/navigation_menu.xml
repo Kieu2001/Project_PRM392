@@ -1,16 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/itemTestNoteDetail"
-        android:title="NoteDetail" />
+<!--    <item-->
+<!--        android:id="@+id/itemTestNoteDetail"-->
+<!--        android:title="NoteDetail" />-->
 
     <item
         android:id="@+id/itemTestNoteListView"
-        android:title="NotesList" />
+        android:icon="@drawable/ic_outline_lightbulb_24"
+        android:title="Notes" />
+
+    <item
+        android:id="@+id/itemTestRemindersList"
+        android:icon="@drawable/ic_bell_64"
+        android:title="Reminders List" />
 
     <item
         android:id="@+id/itemTestManageFolder"
+        android:icon="@drawable/ic_outline_folder_24"
         android:title="ManageFolder" />
+
+    <item
+        android:id="@+id/itemTag"
+        android:icon="@drawable/ic_outline_label_24"
+        android:title="Tag" />
 
     <item
         android:id="@+id/itemTestFeedback"
@@ -21,44 +33,40 @@
         android:title="Share with me" />
 
     <item
-        android:id="@+id/itemSetting"
-        android:title="Setting" />
-
-    <item
         android:id="@+id/itemRegister"
         android:title="Register" />
 
-    <item
-        android:id="@+id/itemSearchNote"
-        android:title="Search note" />
-
-    <item
-        android:id="@+id/itemTag"
-        android:title="Tag" />
+<!--    <item-->
+<!--        android:id="@+id/itemSearchNote"-->
+<!--        android:title="Search note" />-->
 
     <item
         android:id="@+id/itemTestUpgradeScreen"
         android:title="Upgrade Account" />
 
-    <item
-        android:id="@+id/itemTestCalendar"
-        android:title="Calendar" />
+<!--    <item-->
+<!--        android:id="@+id/itemTestCalendar"-->
+<!--        android:title="Calendar" />-->
 
-    <item
-        android:id="@+id/itemTestFavourite"
-        android:title="Favorite" />
+<!--    <item-->
+<!--        android:id="@+id/itemTestFavourite"-->
+<!--        android:title="Favorite" />-->
 
     <item
         android:id="@+id/itemTestArchive"
+        android:icon="@drawable/ic_outline_archive_24"
         android:title="Archive" />
 
     <item
-        android:id="@+id/itemTestBin"
-        android:title="Bin" />
+        android:id="@+id/itemSetting"
+        android:icon="@drawable/ic_outline_settings_applications_24"
+        android:title="Setting" />
 
     <item
-        android:id="@+id/itemTestRemindersList"
-        android:title="Reminders List" />
+        android:id="@+id/itemTestBin"
+        android:icon="@drawable/ic_delete_outline"
+        android:title="Bin" />
+
     <item
         android:id="@+id/itemLogout"
         android:title="Logout" />

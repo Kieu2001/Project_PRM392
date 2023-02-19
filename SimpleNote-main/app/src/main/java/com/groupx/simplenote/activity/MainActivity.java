@@ -138,10 +138,10 @@ public class MainActivity extends AppCompatActivity {
                 int id = item.getItemId();
                 Intent intent;
                 switch (id) {
-                    case R.id.itemTestNoteDetail:
-                        intent = new Intent(getApplicationContext(), CreateNoteActivity.class);
-                        startActivity(intent);
-                        return true;
+//                    case R.id.itemTestNoteDetail:
+//                        intent = new Intent(getApplicationContext(), CreateNoteActivity.class);
+//                        startActivity(intent);
+//                        return true;
                     case R.id.itemTestNoteListView:
                         intent = new Intent(getApplicationContext(), NoteListActivity.class);
                         startActivity(intent);
@@ -166,10 +166,10 @@ public class MainActivity extends AppCompatActivity {
                         intent = new Intent(getApplicationContext(), RegisterActivity.class);
                         startActivity(intent);
                         return true;
-                    case R.id.itemSearchNote:
-                        intent = new Intent(getApplicationContext(), SearchActivity.class);
-                        startActivity(intent);
-                        return true;
+//                    case R.id.itemSearchNote:
+//                        intent = new Intent(getApplicationContext(), SearchActivity.class);
+//                        startActivity(intent);
+//                        return true;
                     case R.id.itemTag:
                         intent = new Intent(getApplicationContext(), TagActivity.class);
                         startActivity(intent);
@@ -182,14 +182,14 @@ public class MainActivity extends AppCompatActivity {
                         intent = new Intent(getApplicationContext(), ArchiveActivity.class);
                         startActivity(intent);
                         return true;
-                    case R.id.itemTestCalendar:
-                        intent = new Intent(getApplicationContext(), CalendarActivity.class);
-                        startActivity(intent);
-                        return true;
-                    case R.id.itemTestFavourite:
-                        intent = new Intent(getApplicationContext(), FavouriteActivity.class);
-                        startActivity(intent);
-                        return true;
+//                    case R.id.itemTestCalendar:
+//                        intent = new Intent(getApplicationContext(), CalendarActivity.class);
+//                        startActivity(intent);
+//                        return true;
+//                    case R.id.itemTestFavourite:
+//                        intent = new Intent(getApplicationContext(), FavouriteActivity.class);
+//                        startActivity(intent);
+//                        return true;
                     case R.id.itemTestBin:
                         intent = new Intent(getApplicationContext(), BinActivity.class);
                         startActivity(intent);
