@@ -17,7 +17,7 @@ import com.groupx.simplenote.fragment.EditTagFragment;
 
 import java.util.ArrayList;
 import java.util.List;
-
+//ABCD
 public class TagActivity extends AppCompatActivity {
     private EditTagFragment editTag;
 

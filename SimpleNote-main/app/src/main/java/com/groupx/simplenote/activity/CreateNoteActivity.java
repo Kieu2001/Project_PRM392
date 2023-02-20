@@ -125,12 +125,9 @@ public class CreateNoteActivity extends AppCompatActivity {
     }
 
     private void saveOrUpdate() {
-        if (mode == Const.NoteDetailActivityMode.EDIT
-        ) {
+        if (mode == Const.NoteDetailActivityMode.EDIT) {
             updateNote();
-        } else if (
-                mode == Const.NoteDetailActivityMode.CREATE
-        ) {
+        } else if (mode == Const.NoteDetailActivityMode.CREATE) {
             saveNote();
         }
     }
