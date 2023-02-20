@@ -143,7 +143,8 @@ public class MainActivity extends AppCompatActivity {
 //                        startActivity(intent);
 //                        return true;
                     case R.id.itemTestNoteListView:
-                        intent = new Intent(getApplicationContext(), NoteListActivity.class);
+                        //intent = new Intent(getApplicationContext(), NoteListActivity.class);
+                        intent = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(intent);
                         return true;
                     case R.id.itemTestManageFolder:

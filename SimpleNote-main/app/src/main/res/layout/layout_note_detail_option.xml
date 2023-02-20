@@ -59,7 +59,7 @@
         <ImageView
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_20sdp"
-            android:src="@drawable/ic_label"
+            android:src="@drawable/ic_outline_label_24"
             android:layout_margin="@dimen/_2sdp"
             android:contentDescription="@string/app_name"
             />
@@ -107,7 +107,7 @@
         <ImageView
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_20sdp"
-            android:src="@drawable/ic_archive"
+            android:src="@drawable/ic_outline_archive_24"
             android:layout_margin="@dimen/_2sdp"
             android:contentDescription="@string/app_name"
             />
