@@ -12,7 +12,7 @@
     <item
         android:id="@+id/itemTestRemindersList"
         android:icon="@drawable/ic_bell_64"
-        android:title="Reminders List" />
+        android:title="Reminders" />
 
     <item
         android:id="@+id/itemTestManageFolder"

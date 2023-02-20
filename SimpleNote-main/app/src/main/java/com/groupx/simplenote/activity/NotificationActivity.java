@@ -28,8 +28,6 @@ public class NotificationActivity extends AppCompatActivity {
         Switch btnSwitch = findViewById(R.id.switch_notification);
         btnSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                // do something, the isChecked will be
-                // true if the switch is in the On position
                 if (isChecked){
 
                 } else {
