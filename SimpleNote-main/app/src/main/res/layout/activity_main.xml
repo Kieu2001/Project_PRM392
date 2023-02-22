@@ -88,8 +88,5 @@
         app:menu="@menu/navigation_menu"
         app:headerLayout="@layout/layout_navigation_header"
         android:layout_gravity="start">
-
-
-
     </com.google.android.material.navigation.NavigationView>
 </androidx.drawerlayout.widget.DrawerLayout>

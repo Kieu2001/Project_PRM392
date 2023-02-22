@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
+    android:paddingRight="10dp"
     tools:context=".activity.CreateReminderActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -39,6 +40,22 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
+                android:id="@+id/imageNotePin"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_marginRight="10dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_outline_push_pin_24" />
+
+            <ImageView
+                android:id="@+id/imageNoteSetReminder"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_marginRight="10dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_bell_64" />
+
+            <ImageView
                 android:id="@+id/imageNoteDetailSave"
                 android:layout_width="@dimen/_20sdp"
                 android:layout_height="@dimen/_20sdp"
@@ -56,14 +73,13 @@
         android:paddingEnd="@dimen/_6sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layoutNoteDetailHeader"
-        >
+        app:layout_constraintTop_toBottomOf="@+id/layoutNoteDetailHeader">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:focusableInTouchMode="true">
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
 
             <EditText
                 android:id="@+id/editTextNoteTitle"
@@ -73,8 +89,7 @@
                 android:hint="@string/title"
                 android:importantForAutofill="no"
                 android:inputType="text"
-                android:textSize="@dimen/_19ssp"
-                />
+                android:textSize="@dimen/_19ssp" />
 
             <EditText
                 android:id="@+id/editTextNoteSubtitle"
@@ -83,8 +98,7 @@
                 android:background="@null"
                 android:hint="@string/sub_title"
                 android:importantForAutofill="no"
-                android:inputType="text"
-                />
+                android:inputType="text" />
 
             <LinearLayout
                 android:id="@+id/layoutDateTime"
@@ -95,12 +109,13 @@
                 <TextView
                     android:id="@+id/edtReminderDate"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content" />
+
                 <TextView
                     android:id="@+id/edtReminderTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_5sdp"/>
+                    android:layout_marginStart="@dimen/_5sdp" />
 
             </LinearLayout>
 
@@ -111,8 +126,7 @@
                 android:background="@null"
                 android:hint="@string/note"
                 android:importantForAutofill="no"
-                android:inputType="textMultiLine"
-                />
+                android:inputType="textMultiLine" />
         </LinearLayout>
     </ScrollView>
 
@@ -138,11 +152,20 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
+                android:id="@+id/imageViewAddOption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:contentDescription="@string/app_name"
+                android:paddingRight="5dp"
+                android:src="@drawable/ic_outline_add_box_24" />
+
+            <ImageView
                 android:id="@+id/imageViewColorOptionLens"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_color_lens" />
+                android:src="@drawable/ic_outline_color_lens_24" />
         </LinearLayout>
 
         <TextView
