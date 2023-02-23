@@ -89,6 +89,7 @@
                 android:hint="@string/title"
                 android:importantForAutofill="no"
                 android:inputType="text"
+
                 android:textSize="@dimen/_19ssp" />
 
             <EditText
@@ -98,7 +99,9 @@
                 android:background="@null"
                 android:hint="@string/sub_title"
                 android:importantForAutofill="no"
+
                 android:inputType="text" />
+
 
             <LinearLayout
                 android:id="@+id/layoutDateTime"
@@ -126,7 +129,12 @@
                 android:background="@null"
                 android:hint="@string/note"
                 android:importantForAutofill="no"
+
+                
+                android:minHeight="48dp" />
+
                 android:inputType="textMultiLine" />
+
         </LinearLayout>
     </ScrollView>
 
