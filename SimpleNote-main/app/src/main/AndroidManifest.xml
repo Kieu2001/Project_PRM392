@@ -9,14 +9,14 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_iconapp"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_iconapp_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SimpleNote"
         tools:targetApi="31">
         <activity
-            android:name=".ForgotPassWordActivity"
+            android:name=".activity.ForgotPassWordActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
