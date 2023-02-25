@@ -38,6 +38,7 @@ public class SettingActivity extends AppCompatActivity {
      *
      */
     private void settingFeature(){
+	//Setting
         ImageView back = findViewById(R.id.imageSettingBack);
         back.setOnClickListener(new View.OnClickListener() {
             @Override

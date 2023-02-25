@@ -11,6 +11,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Debug;
+import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -30,6 +32,7 @@ import com.groupx.simplenote.entity.NoteAccount;
 import com.groupx.simplenote.entity.NoteTag;
 import com.groupx.simplenote.fragment.ChoosingNoteColorFragment;
 import com.groupx.simplenote.fragment.NoteDetailOptionFragment;
+import com.groupx.simplenote.fragment.ReminderChooseOptionRefer;
 import com.groupx.simplenote.fragment.ReminderDetailOptionFragment;
 
 import java.text.DateFormat;
@@ -44,7 +47,7 @@ import java.util.Set;
 
 public class CreateReminderActivity extends AppCompatActivity {
     private ImageView imageNoteDetailBack, imageNoteDetailSave, imageNoteDetailColorOptionLens,
-            imageNoteDetailOption;
+            imageNoteDetailOption, imageNoteAddOption;
     private EditText editTextNoteSubtitle, editTextNoteTitle, editTextNoteContent;
     private TextView textViewNoteDetailDatetime, edtReminderDate, edtReminderTime;
     private ConstraintLayout layoutNoteDetail;
@@ -71,6 +74,7 @@ public class CreateReminderActivity extends AppCompatActivity {
         imageNoteDetailSave = findViewById(R.id.imageNoteDetailSave);
         imageNoteDetailColorOptionLens = findViewById(R.id.imageViewColorOptionLens);
         imageNoteDetailOption = findViewById(R.id.imageNoteDetailOption);
+        imageNoteAddOption = findViewById(R.id.imageViewAddOption);
 
         editTextNoteTitle = findViewById(R.id.editTextNoteTitle);
         editTextNoteSubtitle = findViewById(R.id.editTextNoteSubtitle);
@@ -185,6 +189,7 @@ public class CreateReminderActivity extends AppCompatActivity {
             reminderTime = timeFormat.format(alreadyNote.getReminderTime());
             edtReminderTime.setText(reminderTime);
         }
+        initChooseOptionRefer();
         initChooseColorOption();
         initOption();
     }
@@ -201,6 +206,7 @@ public class CreateReminderActivity extends AppCompatActivity {
         imageNoteDetailSave.setVisibility(View.GONE);
         imageNoteDetailColorOptionLens.setVisibility(View.GONE);
         imageNoteDetailOption.setVisibility(View.GONE);
+        imageNoteAddOption.setVisibility(View.GONE);
 
         Utils.disableEditText(editTextNoteTitle);
         Utils.disableEditText(editTextNoteSubtitle);
@@ -221,6 +227,18 @@ public class CreateReminderActivity extends AppCompatActivity {
         });
     }
 
+    private void initChooseOptionRefer() {
+        ReminderChooseOptionRefer option = new ReminderChooseOptionRefer(this);
+        imageNoteAddOption.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                option.show(getSupportFragmentManager(), "option");
+            }
+        });
+    }
+
+
+
     private void initOption() {
         ReminderDetailOptionFragment optionFragment = new ReminderDetailOptionFragment(this);
 
@@ -230,6 +248,8 @@ public class CreateReminderActivity extends AppCompatActivity {
                 optionFragment.show(getSupportFragmentManager(), "optionFragment");
             }
         });
+
+
     }
 
     private Note saveNote() {
@@ -298,6 +318,7 @@ public class CreateReminderActivity extends AppCompatActivity {
         String subtitle = editTextNoteSubtitle.getText().toString().trim();
         String content = editTextNoteContent.getText().toString();
 
+        System.out.println("Da den day ahihi:)))");
         cancelAlarm(alreadyNote);
 
         if (alreadyNote == null) {
@@ -316,8 +337,10 @@ public class CreateReminderActivity extends AppCompatActivity {
             Date timeReminder = format.parse(reminderTime);
             alreadyNote.setReminderTime(timeReminder);
         } catch (ParseException e) {
+            Log.d("AAA", "Da den day 1");
             e.printStackTrace();
         }
+        //System.out.println("Da den day 1");
 
         NoteDatabase.getSNoteDatabase(getApplicationContext())
                 .noteDao().update(alreadyNote);
@@ -325,7 +348,8 @@ public class CreateReminderActivity extends AppCompatActivity {
         setAlarm(alreadyNote);
 
         insertUpdateNoteTagId(alreadyNote);
-
+        //System.out.println("Da den day 2");
+        Log.d("AAA", "Da den day 2");
         Intent intent = new Intent();
         setResult(RESULT_OK, intent);
         finish();
@@ -404,7 +428,7 @@ public class CreateReminderActivity extends AppCompatActivity {
         intent.putExtra("noteId", note.getId());                                                       //sending data to alarm class to create channel and notification
         intent.putExtra("time", dateFormat.format(note.getReminderTime()));
         intent.putExtra("date", timeFormat.format(note.getReminderTime()));
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, intent, PendingIntent.FLAG_ONE_SHOT);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, intent, PendingIntent.FLAG_MUTABLE);
         String dateandtime = dateFormat.format(note.getReminderTime()) + " " + timeFormat.format(note.getReminderTime());
         DateFormat formatter = new SimpleDateFormat("d-M-yyyy HH:mm");
         try {
@@ -426,7 +450,7 @@ public class CreateReminderActivity extends AppCompatActivity {
         intent.putExtra("noteId", note.getId());                                                       //sending data to alarm class to create channel and notification
         intent.putExtra("time", dateFormat.format(note.getReminderTime()));
         intent.putExtra("date", timeFormat.format(note.getReminderTime()));
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, intent, PendingIntent.FLAG_ONE_SHOT);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, intent, PendingIntent.FLAG_MUTABLE);
         am.cancel(pendingIntent);
         Toast.makeText(getApplicationContext(), "Alarm canceled", Toast.LENGTH_SHORT).show();
     }

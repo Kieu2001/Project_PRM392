@@ -19,22 +19,51 @@
             android:id="@+id/imageReminderBack"
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_20sdp"
-            android:src="@drawable/ic_arrow_back"
+            android:layout_marginStart="4dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_menu"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:contentDescription="@string/app_name"/>
+            app:layout_constraintVertical_bias="0.461" />
+
         <TextView
             android:id="@+id/txtTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/app_name"
             android:text="Reminder"
-            android:textStyle="bold"
             android:textSize="@dimen/_15sdp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/imageReminderAdd"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.11"
             app:layout_constraintStart_toEndOf="@id/imageReminderBack"
-            android:contentDescription="@string/app_name"/>
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageSearch"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginEnd="76dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_outline_search_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.461" />
+
+        <ImageView
+            android:id="@+id/imageSplitScreen"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginEnd="36dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_outline_splitscreen_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.461" />
+
         <ImageView
             android:id="@+id/imageReminderAdd"
             android:layout_width="@dimen/_20sdp"
@@ -45,6 +74,20 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:contentDescription="@string/app_name"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/imageviewCreateNewNote"
+        android:layout_width="@dimen/_45sdp"
+        android:layout_height="@dimen/_45sdp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="48dp"
+        android:background="@drawable/icon_create_note_button"
+        android:elevation="1dp"
+        android:padding="@dimen/_5sdp"
+        android:src="@drawable/ic_add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/black" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerviewNote"
