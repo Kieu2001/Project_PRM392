@@ -1,17 +1,26 @@
 package com.groupx.simplenote.activity;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.Manifest;
 import android.app.AlarmManager;
 import android.app.DatePickerDialog;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Debug;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
@@ -35,6 +44,7 @@ import com.groupx.simplenote.fragment.NoteDetailOptionFragment;
 import com.groupx.simplenote.fragment.ReminderChooseOptionRefer;
 import com.groupx.simplenote.fragment.ReminderDetailOptionFragment;
 
+import java.io.ByteArrayOutputStream;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -47,7 +57,7 @@ import java.util.Set;
 
 public class CreateReminderActivity extends AppCompatActivity {
     private ImageView imageNoteDetailBack, imageNoteDetailSave, imageNoteDetailColorOptionLens,
-            imageNoteDetailOption, imageNoteAddOption;
+            imageNoteDetailOption, imageNoteAddOption, imgTakePhoto;
     private EditText editTextNoteSubtitle, editTextNoteTitle, editTextNoteContent;
     private TextView textViewNoteDetailDatetime, edtReminderDate, edtReminderTime;
     private ConstraintLayout layoutNoteDetail;
@@ -75,6 +85,7 @@ public class CreateReminderActivity extends AppCompatActivity {
         imageNoteDetailColorOptionLens = findViewById(R.id.imageViewColorOptionLens);
         imageNoteDetailOption = findViewById(R.id.imageNoteDetailOption);
         imageNoteAddOption = findViewById(R.id.imageViewAddOption);
+        imgTakePhoto = findViewById(R.id.imgTakePhoto);
 
         editTextNoteTitle = findViewById(R.id.editTextNoteTitle);
         editTextNoteSubtitle = findViewById(R.id.editTextNoteSubtitle);
@@ -256,6 +267,8 @@ public class CreateReminderActivity extends AppCompatActivity {
         String title = editTextNoteTitle.getText().toString().trim();
         String subtitle = editTextNoteSubtitle.getText().toString().trim();
         String content = editTextNoteContent.getText().toString();
+        byte[] image = ImageView_To_Byte(imgTakePhoto);
+
 
         final Note note = new Note();
         note.setTitle(title);
@@ -264,6 +277,7 @@ public class CreateReminderActivity extends AppCompatActivity {
         note.setColor(selectedNoteColor);
         note.setSince(new Date());
         note.setLastUpdate(new Date());
+        note.setImage(image);
 
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         String reminderTime = edtReminderDate.getText().toString() + " " + edtReminderTime.getText().toString();
@@ -317,8 +331,9 @@ public class CreateReminderActivity extends AppCompatActivity {
         String title = editTextNoteTitle.getText().toString().trim();
         String subtitle = editTextNoteSubtitle.getText().toString().trim();
         String content = editTextNoteContent.getText().toString();
+        byte[] image = ImageView_To_Byte(imgTakePhoto);
 
-        System.out.println("Da den day ahihi:)))");
+        //System.out.println("Da den day ahihi:)))");
         cancelAlarm(alreadyNote);
 
         if (alreadyNote == null) {
@@ -330,6 +345,7 @@ public class CreateReminderActivity extends AppCompatActivity {
         alreadyNote.setSubTitle(subtitle);
         alreadyNote.setColor(selectedNoteColor);
         alreadyNote.setLastUpdate(new Date());
+        alreadyNote.setImage(image);
 
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         String reminderTime = edtReminderDate.getText().toString() + " " + edtReminderTime.getText().toString();
@@ -337,19 +353,17 @@ public class CreateReminderActivity extends AppCompatActivity {
             Date timeReminder = format.parse(reminderTime);
             alreadyNote.setReminderTime(timeReminder);
         } catch (ParseException e) {
-            Log.d("AAA", "Da den day 1");
+            //Log.d("AAA", "Da den day 1");
             e.printStackTrace();
         }
         //System.out.println("Da den day 1");
 
         NoteDatabase.getSNoteDatabase(getApplicationContext())
                 .noteDao().update(alreadyNote);
-
         setAlarm(alreadyNote);
-
         insertUpdateNoteTagId(alreadyNote);
         //System.out.println("Da den day 2");
-        Log.d("AAA", "Da den day 2");
+        //Log.d("AAA", "Da den day 2");
         Intent intent = new Intent();
         setResult(RESULT_OK, intent);
         finish();
@@ -367,6 +381,8 @@ public class CreateReminderActivity extends AppCompatActivity {
     }
 
     private void setViewAndEditNote() {
+        Bitmap bitmap = BitmapFactory.decodeByteArray(alreadyNote.getImage(), 0, alreadyNote.getImage().length);
+        imgTakePhoto.setImageBitmap(bitmap);
         editTextNoteTitle.setText(alreadyNote.getTitle());
         editTextNoteSubtitle.setText(alreadyNote.getSubTitle());
         editTextNoteContent.setText(alreadyNote.getNote());
@@ -453,5 +469,53 @@ public class CreateReminderActivity extends AppCompatActivity {
         PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, intent, PendingIntent.FLAG_MUTABLE);
         am.cancel(pendingIntent);
         Toast.makeText(getApplicationContext(), "Alarm canceled", Toast.LENGTH_SHORT).show();
+    }
+
+
+    public void requestCamPermision() {
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
+            if (checkSelfPermission(android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[] {Manifest.permission.CAMERA}, 8888);
+            }
+        }
+    }
+
+    public void takePhoto() {
+        requestCamPermision();
+        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(cameraIntent, 8888);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 8888 && resultCode == RESULT_OK) {
+            Bitmap photo = (Bitmap) data.getExtras().get("data");
+            imgTakePhoto.setImageBitmap(photo);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    private byte[] ImageView_To_Byte(ImageView img) {
+        BitmapDrawable drawable = (BitmapDrawable) img.getDrawable();
+        Bitmap bmp = drawable.getBitmap();
+
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        byte[] byteArray = stream.toByteArray();
+        return byteArray;
+    }
+
+    public void Byte_To_Image() {
+        //Bitmap bitmap = BitmapFactory.decodeByteArray(note.hình, 0, note.hinh.length);
+        //imgd.setImageBitmap(bitmap);
+    }
+
+    public void choosePhoto() {
+
     }
 }

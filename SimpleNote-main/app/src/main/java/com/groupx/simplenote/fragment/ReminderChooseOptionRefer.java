@@ -14,6 +14,7 @@ import com.groupx.simplenote.activity.CreateReminderActivity;
 
 public class ReminderChooseOptionRefer extends BottomSheetDialogFragment {
     private CreateReminderActivity activity;
+    private View layoutTakePhoto, layoutChoosePhoto;
 
     public ReminderChooseOptionRefer(CreateReminderActivity activity) {
         super();
@@ -25,5 +26,27 @@ public class ReminderChooseOptionRefer extends BottomSheetDialogFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         return inflater.inflate(R.layout.layout_note_reminder_detail, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        if (view != null) {
+            layoutTakePhoto = view.findViewById(R.id.layoutTakePhoto);
+            layoutTakePhoto.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    activity.takePhoto();
+                }
+            });
+
+            layoutChoosePhoto = view.findViewById(R.id.layoutChoosePhoto);
+            layoutChoosePhoto.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    activity.choosePhoto();
+                }
+            });
+        }
     }
 }

@@ -20,10 +20,11 @@ public class Account implements Serializable {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "accountId")
     private int id;
-    private String username;
+    //private String username;
+    private String email;
     private String password;
-    private String avatarImagePath;
-    private Date dob;
+    //private String avatarImagePath;
+    //private Date dob;
     private String fullName;
     private String settingJson;
 
@@ -35,13 +36,21 @@ public class Account implements Serializable {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
+
+    //    public String getUsername() {
+//        return username;
+//    }
+//
+//    public void setUsername(String username) {
+//        this.username = username;
+//    }
 
     public String getPassword() {
         return password;
@@ -51,21 +60,21 @@ public class Account implements Serializable {
         this.password = password;
     }
 
-    public String getAvatarImagePath() {
-        return avatarImagePath;
-    }
+//    public String getAvatarImagePath() {
+//        return avatarImagePath;
+//    }
+//
+//    public void setAvatarImagePath(String avatarImagePath) {
+//        this.avatarImagePath = avatarImagePath;
+//    }
 
-    public void setAvatarImagePath(String avatarImagePath) {
-        this.avatarImagePath = avatarImagePath;
-    }
-
-    public Date getDob() {
-        return dob;
-    }
-
-    public void setDob(Date dob) {
-        this.dob = dob;
-    }
+//    public Date getDob() {
+//        return dob;
+//    }
+//
+//    public void setDob(Date dob) {
+//        this.dob = dob;
+//    }
 
     public String getFullName() {
         return fullName;
