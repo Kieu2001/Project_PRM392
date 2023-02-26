@@ -17,6 +17,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Debug;
@@ -45,6 +46,8 @@ import com.groupx.simplenote.fragment.ReminderChooseOptionRefer;
 import com.groupx.simplenote.fragment.ReminderDetailOptionFragment;
 
 import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -493,6 +496,17 @@ public class CreateReminderActivity extends AppCompatActivity {
             Bitmap photo = (Bitmap) data.getExtras().get("data");
             imgTakePhoto.setImageBitmap(photo);
         }
+
+        if (requestCode == 2001 && resultCode == RESULT_OK && data != null) {
+            Uri uri = data.getData();
+            try {
+                InputStream inputStream = getContentResolver().openInputStream(uri);
+                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                imgTakePhoto.setImageBitmap(bitmap);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override
@@ -510,12 +524,9 @@ public class CreateReminderActivity extends AppCompatActivity {
         return byteArray;
     }
 
-    public void Byte_To_Image() {
-        //Bitmap bitmap = BitmapFactory.decodeByteArray(note.hình, 0, note.hinh.length);
-        //imgd.setImageBitmap(bitmap);
-    }
-
     public void choosePhoto() {
-
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");
+        startActivityForResult(intent, 2001);
     }
 }

@@ -39,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         //etPassword = findViewById(R.id.edtPassword);
         //btnLogin = findViewById(R.id.btnLogin);
         btnRegister = findViewById(R.id.btnRegister);
-        //tvForgotPassword = findViewById(R.id.tvForgotPassword);
+        tvForgotPassword = findViewById(R.id.tvForgotPassword);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,11 +86,11 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
             }
         });
-//        tvForgotPassword.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(LoginActivity.this, ForgotPassWordActivity.class));
-//            }
-//        });
+        tvForgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivity.this, ForgotPassWordActivity.class));
+            }
+        });
     } //Modify Nav-bar menu.
 }
