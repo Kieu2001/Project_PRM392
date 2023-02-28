@@ -122,6 +122,13 @@ public class TagAdapter extends RecyclerView.Adapter<TagAdapter.TagViewHolder> {
             viewTagContainer = itemView.findViewById(R.id.viewTagContainer);
             textViewTagName = itemView.findViewById(R.id.textViewTagName);
             imageViewTagOption = itemView.findViewById(R.id.imageViewTagEditOption);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int pos = getAdapterPosition();
+
+                }
+            });
         }
 
         void setTag(Tag tag) {

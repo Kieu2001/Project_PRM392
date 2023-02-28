@@ -4,12 +4,22 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.se.omapi.Session;
+import android.os.Debug;
 import android.view.View;
 
 import com.groupx.simplenote.R;
 
 import java.util.Properties;
+
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 public class CheckingEmailActivity extends AppCompatActivity {
 
@@ -24,9 +34,12 @@ public class CheckingEmailActivity extends AppCompatActivity {
                 while (true) {
                     synchronized (this) {
                         try {
-                            wait(3000);
+                            wait(10000);
+                            buttonSendEmail(capcha);
                             Intent intent = new Intent(CheckingEmailActivity.this, ResetPasswordActivity.class);
+                            intent.putExtra("capcha", capcha);
                             startActivity(intent);
+                            break;
                         } catch (Exception ex) {
 
                         }
@@ -37,53 +50,54 @@ public class CheckingEmailActivity extends AppCompatActivity {
         t.start();
     }
 
-//    public void buttonSendEmail(View view){
-//
-//        try {
-//            String stringSenderEmail = "SenderEmail963@gmail.com";
-//            String stringReceiverEmail = "receiveremail963@gmail.com";
-//            String stringPasswordSenderEmail = "Test*123";
-//
-//            String stringHost = "smtp.gmail.com";
-//
-//            Properties properties = System.getProperties();
-//
-//            properties.put("mail.smtp.host", stringHost);
-//            properties.put("mail.smtp.port", "465");
-//            properties.put("mail.smtp.ssl.enable", "true");
-//            properties.put("mail.smtp.auth", "true");
-//
-//            javax.mail.Session session = Session.getInstance(properties, new Authenticator() {
-//                @Override
-//                protected PasswordAuthentication getPasswordAuthentication() {
-//                    return new PasswordAuthentication(stringSenderEmail, stringPasswordSenderEmail);
-//                }
-//            });
-//
-//            MimeMessage mimeMessage = new MimeMessage(session);
-//            mimeMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(stringReceiverEmail));
-//
-//            mimeMessage.setSubject("Subject: Android App email");
-//            mimeMessage.setText("Hello Programmer, \n\nProgrammer World has sent you this 2nd email. \n\n Cheers!\nProgrammer World");
-//
-//            Thread thread = new Thread(new Runnable() {
-//                @Override
-//                public void run() {
-//                    try {
-//                        Transport.send(mimeMessage);
-//                    } catch (MessagingException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//            });
-//            thread.start();
-//
-//        } catch (AddressException e) {
-//            e.printStackTrace();
-//        } catch (MessagingException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    public void buttonSendEmail(String msg){
+
+        try {
+            String stringSenderEmail = "anhnkthe151369@fpt.edu.vn";
+            String stringReceiverEmail = "tuananh462001@gmail.com";
+            String stringPasswordSenderEmail = "0987582761";
+
+            String stringHost = "smtp.gmail.com";
+
+            Properties properties = System.getProperties();
+
+            properties.put("mail.smtp.host", stringHost);
+            properties.put("mail.smtp.port", "465");
+            properties.put("mail.smtp.ssl.enable", "true");
+            properties.put("mail.smtp.auth", "true");
+
+            javax.mail.Session session = Session.getInstance(properties, new Authenticator() {
+                @Override
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(stringSenderEmail, stringPasswordSenderEmail);
+                }
+            });
+
+            MimeMessage mimeMessage = new MimeMessage(session);
+            mimeMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(stringReceiverEmail));
+
+            mimeMessage.setSubject("Subject: Capcha for Reset-password");
+            mimeMessage.setText("Capcha: "+ msg);
+
+            Thread thread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        Transport.send(mimeMessage);
+                        System.out.println("Da den day");
+                    } catch (MessagingException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+            thread.start();
+
+        } catch (AddressException e) {
+            e.printStackTrace();
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     static final char[] chars = {'1', 'A', 'a', 'B', 'b', 'C',

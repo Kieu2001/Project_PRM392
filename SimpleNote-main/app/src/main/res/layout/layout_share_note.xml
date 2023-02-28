@@ -60,22 +60,24 @@
         android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginStart="@dimen/_15sdp"
         android:layout_marginEnd="@dimen/_15sdp">
+
         <Button
-            style="@style/Widget.Material3.Button.OutlinedButton"
             android:id="@+id/buttonShareCancel"
+            style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="0.50"
             android:text="@string/cancel"
-            android:layout_weight="0.50"
-            />
+            android:textColor="@color/black" />
+
         <Button
-            style="@style/Widget.Material3.Button.IconButton.Filled"
             android:id="@+id/buttonShare"
+            style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/share"
             android:layout_weight="0.50"
-            />
+            android:text="@string/share"
+            android:textColor="@color/black" />
     </LinearLayout>
 
 </LinearLayout>
