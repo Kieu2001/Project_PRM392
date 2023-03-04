@@ -32,6 +32,7 @@ import com.groupx.simplenote.entity.NoteAccount;
 import com.groupx.simplenote.entity.NoteTag;
 import com.groupx.simplenote.fragment.ChoosingNoteColorFragment;
 import com.groupx.simplenote.fragment.NoteDetailOptionFragment;
+import com.groupx.simplenote.fragment.ReminderChooseOptionRefer;
 import com.groupx.simplenote.fragment.ReminderDetailOptionFragment;
 
 import java.text.DateFormat;
@@ -46,7 +47,7 @@ import java.util.Set;
 
 public class CreateReminderActivity extends AppCompatActivity {
     private ImageView imageNoteDetailBack, imageNoteDetailSave, imageNoteDetailColorOptionLens,
-            imageNoteDetailOption;
+            imageNoteDetailOption, imageNoteAddOption;
     private EditText editTextNoteSubtitle, editTextNoteTitle, editTextNoteContent;
     private TextView textViewNoteDetailDatetime, edtReminderDate, edtReminderTime;
     private ConstraintLayout layoutNoteDetail;
@@ -73,6 +74,7 @@ public class CreateReminderActivity extends AppCompatActivity {
         imageNoteDetailSave = findViewById(R.id.imageNoteDetailSave);
         imageNoteDetailColorOptionLens = findViewById(R.id.imageViewColorOptionLens);
         imageNoteDetailOption = findViewById(R.id.imageNoteDetailOption);
+        imageNoteAddOption = findViewById(R.id.imageViewAddOption);
 
         editTextNoteTitle = findViewById(R.id.editTextNoteTitle);
         editTextNoteSubtitle = findViewById(R.id.editTextNoteSubtitle);
@@ -187,6 +189,7 @@ public class CreateReminderActivity extends AppCompatActivity {
             reminderTime = timeFormat.format(alreadyNote.getReminderTime());
             edtReminderTime.setText(reminderTime);
         }
+        initChooseOptionRefer();
         initChooseColorOption();
         initOption();
     }
@@ -203,6 +206,7 @@ public class CreateReminderActivity extends AppCompatActivity {
         imageNoteDetailSave.setVisibility(View.GONE);
         imageNoteDetailColorOptionLens.setVisibility(View.GONE);
         imageNoteDetailOption.setVisibility(View.GONE);
+        imageNoteAddOption.setVisibility(View.GONE);
 
         Utils.disableEditText(editTextNoteTitle);
         Utils.disableEditText(editTextNoteSubtitle);
@@ -223,6 +227,18 @@ public class CreateReminderActivity extends AppCompatActivity {
         });
     }
 
+    private void initChooseOptionRefer() {
+        ReminderChooseOptionRefer option = new ReminderChooseOptionRefer(this);
+        imageNoteAddOption.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                option.show(getSupportFragmentManager(), "option");
+            }
+        });
+    }
+
+
+
     private void initOption() {
         ReminderDetailOptionFragment optionFragment = new ReminderDetailOptionFragment(this);
 
@@ -232,6 +248,8 @@ public class CreateReminderActivity extends AppCompatActivity {
                 optionFragment.show(getSupportFragmentManager(), "optionFragment");
             }
         });
+
+
     }
 
     private Note saveNote() {
