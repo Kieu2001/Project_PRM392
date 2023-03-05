@@ -18,6 +18,9 @@
 
     </style>
 
-
+    <style name="DialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/silde_in_bottom</item>
+        <item name="android:windowExitAnimation">@anim/silde_out_bottom</item>
+    </style>
 
 </resources>
