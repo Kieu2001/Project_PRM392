@@ -20,6 +20,8 @@ public interface TagDao {
     @Query("SELECT * FROM TAG ORDER BY ID DESC")
     List<Tag> getAllTags();
 
+
+
     @Insert
     void insertTag(Tag tag);
     @Insert(onConflict = OnConflictStrategy.REPLACE)

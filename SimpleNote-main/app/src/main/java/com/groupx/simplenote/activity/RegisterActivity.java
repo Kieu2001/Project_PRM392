@@ -33,7 +33,7 @@ import java.util.Random;
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText etUserName, etPassword, etMail, etConfirmPw, etAvatar, etFullName;
-    //private EditText etDob;
+    private EditText etDob;
     private Button btnRegister;
     private TextView tv_Login;
 
@@ -44,17 +44,17 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_register);
 
-        etUserName = findViewById(R.id.edtUsername);
-        etPassword = findViewById(R.id.edtPassword);
-        etMail = findViewById(R.id.edtEmail);
+        etUserName = findViewById(R.id.etUserName);
+        etPassword = findViewById(R.id.etPassword);
+        etMail = findViewById(R.id.etEmail);
         etConfirmPw = findViewById(R.id.edtConfirmPassword);
 
-        //etAvatar = findViewById(R.id.etAvatar);
-        //etFullName = findViewById(R.id.etFullName);
-        //etDob = findViewById(R.id.etDob);
-        btnRegister = findViewById(R.id.btnSignUp);
+//        etAvatar = findViewById(R.id.etAvatar);
+//        etFullName = findViewById(R.id.etFullName);
+//        etDob = findViewById(R.id.etDob);
+        btnRegister = findViewById(R.id.btnRegister);
         //btnLogin = findViewById(R.id.btnLogin);
-        tv_Login = findViewById(R.id.tvSignIn);
+        tv_Login = findViewById(R.id.btnLogin);
 
         /*
          * Date picker
@@ -94,15 +94,15 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Account accountEntity = new Account();
-                accountEntity.setUsername(etUserName.getText().toString());
+                accountEntity.setEmail(etMail.getText().toString());
                 accountEntity.setPassword(etPassword.getText().toString());
-                accountEntity.setAvatarImagePath(etAvatar.getText().toString());
+                //accountEntity.setAvatarImagePath(etAvatar.getText().toString());
 //                try {
 //                    accountEntity.setDob(format.parse(etDob.getText().toString()));
 //                } catch (ParseException e) {
 //                    e.printStackTrace();
 //                }
-                accountEntity.setFullName(etFullName.getText().toString());
+                accountEntity.setFullName(etUserName.getText().toString());
                 if(validateInput(accountEntity)){
                     /*final FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
                     firebaseAuth.createUserWithEmailAndPassword(etUserName.getText().toString(), etPassword.getText().toString()).addOnCompleteListener((task) -> {
@@ -151,16 +151,15 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private Boolean validateInput(Account accountEntity){
-        if(accountEntity.getUsername().isEmpty()
+        if (!accountEntity.getPassword().equalsIgnoreCase(etConfirmPw.getText().toString())) {
+            return false;
+        } else if(accountEntity.getEmail().isEmpty()
                 || accountEntity.getPassword().isEmpty()
-                || accountEntity.getAvatarImagePath().isEmpty()
-                || accountEntity.getDob() ==  null
                 || accountEntity.getFullName().isEmpty()){
             return false;
         }
         return true;
     }
-
 
 }
 

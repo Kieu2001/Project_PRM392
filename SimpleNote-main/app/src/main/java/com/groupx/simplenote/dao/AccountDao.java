@@ -13,7 +13,7 @@ public interface AccountDao {
     @Insert
     void insert(Account account);
 
-    @Query("SELECT * FROM ACCOUNT WHERE ACCOUNT.username == :email")
+    @Query("SELECT * FROM ACCOUNT WHERE ACCOUNT.email == :email")
     Account getAccountByEmail(String email);
 
     @Query("SELECT * FROM ACCOUNT WHERE ACCOUNT.accountId == :accountId")
@@ -25,6 +25,6 @@ public interface AccountDao {
     @Insert
     void registerAccount(Account accountEntity);
 
-    @Query("select * from Account where username=(:username) and password=(:password)")
-    Account login(String username, String password);
+    @Query("select * from Account where email=(:email) and password=(:password)")
+    Account login(String email, String password);
 }

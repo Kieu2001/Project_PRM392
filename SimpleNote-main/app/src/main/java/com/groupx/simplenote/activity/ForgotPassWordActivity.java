@@ -29,7 +29,6 @@ public class ForgotPassWordActivity extends AppCompatActivity {
 
         btnForgotPassword = (Button) findViewById(R.id.btnReset);
         edtEmailReset = (EditText) findViewById(R.id.edtReset);
-        auth = FirebaseAuth.getInstance();
         btnForgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,16 +49,18 @@ public class ForgotPassWordActivity extends AppCompatActivity {
             edtEmailReset.requestFocus();
             return;
         }
-        auth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()){
-                    //Intent intent = new Intent(ForgotPassWordActivity.this,CheckingMailActivity.class);
-                    //startActivity(intent);
-                }else {
-                    //Toast.makeText(ForgotPasswordActivity.this, "Try again", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+        Intent intent = new Intent(ForgotPassWordActivity.this,CheckingEmailActivity.class);
+        startActivity(intent);
+//        auth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
+//            @Override
+//            public void onComplete(@NonNull Task<Void> task) {
+//                if(task.isSuccessful()){
+//                    //Intent intent = new Intent(ForgotPassWordActivity.this,CheckingMailActivity.class);
+//                    //startActivity(intent);
+//                }else {
+//                    //Toast.makeText(ForgotPasswordActivity.this, "Try again", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
     }
 }
