@@ -31,14 +31,15 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        etUserName = findViewById(R.id.etUserName);
+        //etUserName = findViewById(R.id.etUserName);
+        etUserName = findViewById(R.id.edtEmail);
         etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
         //etUserName = findViewById(R.id.edtEmail);
         //etPassword = findViewById(R.id.edtPassword);
-        //btnLogin = findViewById(R.id.btnSignUp);
-        //btnRegister = findViewById(R.id.tvSignUp);
-        //tvForgotPassword = findViewById(R.id.tvForgotPassword);
+        //btnLogin = findViewById(R.id.btnLogin);
+        btnRegister = findViewById(R.id.btnRegister);
+        tvForgotPassword = findViewById(R.id.tvForgotPassword);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,17 +80,17 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
-//        btnRegister.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
-//            }
-//        });
-//        tvForgotPassword.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(LoginActivity.this, ForgotPassWordActivity.class));
-//            }
-//        });
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+            }
+        });
+        tvForgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivity.this, ForgotPassWordActivity.class));
+            }
+        });
     } //Modify Nav-bar menu.
 }

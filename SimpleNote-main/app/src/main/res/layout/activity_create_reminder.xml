@@ -81,6 +81,13 @@
             android:focusableInTouchMode="true"
             android:orientation="vertical">
 
+            <ImageView
+                android:id="@+id/imgTakePhoto"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
             <EditText
                 android:id="@+id/editTextNoteTitle"
                 android:layout_width="match_parent"

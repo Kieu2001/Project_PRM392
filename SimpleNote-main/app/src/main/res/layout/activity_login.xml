@@ -8,206 +8,206 @@
     android:background="@drawable/gradient"
     tools:context=".activity.LoginActivity">
 
-    <TextView
-        android:id="@+id/tvRegister"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_20sdp"
-        android:layout_marginTop="232dp"
-        android:text="Login Account"
-        android:gravity="center"
-        android:textSize="@dimen/_20sdp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/etUserName"
-        android:hint="Enter UserName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_20sdp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvRegister" />
-    <EditText
-        android:id="@+id/etPassword"
-        android:hint="Enter PassWord"
-        android:inputType="textPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_20sdp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etUserName" />
-    <Button
-        android:id="@+id/btnRegister"
-        android:text="REGISTER"
-        android:textSize="@dimen/_15sdp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_50sdp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogin"/>
-    <Button
-        android:id="@+id/btnLogin"
-        android:text="LOGIN"
-        android:textSize="@dimen/_15sdp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_50sdp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPassword"/>
-
-
 <!--    <TextView-->
-<!--        android:id="@+id/tvTitle"-->
-<!--        android:layout_width="wrap_content"-->
+<!--        android:id="@+id/tvRegister"-->
+<!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="@dimen/_20sdp"-->
-<!--        android:fontFamily="@font/jost_regular"-->
-<!--        android:text="@string/quote"-->
-<!--        android:textColor="#99F3EAEA"-->
-<!--        android:textSize="@dimen/_12ssp"-->
+<!--        android:layout_margin="@dimen/_20sdp"-->
+<!--        android:layout_marginTop="232dp"-->
+<!--        android:text="Login Account"-->
+<!--        android:gravity="center"-->
+<!--        android:textSize="@dimen/_20sdp"-->
 <!--        android:textStyle="bold"-->
 <!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/imageView" />-->
-
-<!--    <ImageView-->
-<!--        android:id="@+id/imageView"-->
-<!--        android:layout_width="200dp"-->
-<!--        android:layout_height="200dp"-->
-<!--        android:layout_marginTop="32dp"-->
-<!--        android:contentDescription="@string/logo"-->
-<!--        android:src="@drawable/logo_note"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.498"-->
 <!--        app:layout_constraintStart_toStartOf="parent"-->
 <!--        app:layout_constraintTop_toTopOf="parent" />-->
 
-
-<!--    <View-->
-<!--        android:id="@+id/vEmail"-->
-<!--        android:layout_width="300dp"-->
-<!--        android:layout_height="40dp"-->
-<!--        android:layout_marginTop="26dp"-->
-<!--        android:background="@drawable/view_border"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.504"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />-->
-
 <!--    <EditText-->
-<!--        android:id="@+id/edtEmail"-->
-<!--        android:layout_width="270dp"-->
-<!--        android:layout_height="40dp"-->
-<!--        android:layout_marginStart="@dimen/_10sdp"-->
-<!--        android:background="@null"-->
-<!--        android:fontFamily="@font/jost_regular"-->
-<!--        android:gravity="center"-->
-<!--        android:hint="@string/email"-->
-<!--        android:importantForAutofill="no"-->
-<!--        android:inputType="textEmailAddress"-->
-<!--        android:maxLines="1"-->
-<!--        android:textAlignment="center"-->
-<!--        android:textColorHint="#4FFFFFFF"-->
-<!--        android:textSize="16sp"-->
-<!--        android:textStyle="bold"-->
-<!--        app:layout_constraintEnd_toEndOf="@+id/vEmail"-->
-<!--        app:layout_constraintHorizontal_bias="0.0"-->
-<!--        app:layout_constraintStart_toStartOf="@+id/vEmail"-->
-<!--        app:layout_constraintTop_toTopOf="@+id/vEmail" />-->
-
-<!--    <View-->
-<!--        android:id="@+id/vPassword"-->
-<!--        android:layout_width="300dp"-->
-<!--        android:layout_height="40dp"-->
-<!--        android:layout_marginTop="20dp"-->
-<!--        android:background="@drawable/view_border"-->
+<!--        android:id="@+id/etUserName"-->
+<!--        android:hint="Enter UserName"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="@dimen/_20sdp"-->
 <!--        app:layout_constraintEnd_toEndOf="parent"-->
 <!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/vEmail" />-->
-
+<!--        app:layout_constraintTop_toBottomOf="@+id/tvRegister" />-->
 <!--    <EditText-->
-<!--        android:id="@+id/edtPassword"-->
-<!--        android:layout_width="270dp"-->
-<!--        android:layout_height="40dp"-->
-<!--        android:background="@null"-->
-<!--        android:fontFamily="@font/jost_regular"-->
-<!--        android:hint="@string/password"-->
-<!--        android:importantForAutofill="no"-->
+<!--        android:id="@+id/etPassword"-->
+<!--        android:hint="Enter PassWord"-->
 <!--        android:inputType="textPassword"-->
-<!--        android:maxLines="1"-->
-<!--        android:textAlignment="center"-->
-<!--        android:textColorHint="#4FFFFFFF"-->
-<!--        android:textSize="16sp"-->
-<!--        android:textStyle="bold"-->
-<!--        app:layout_constraintEnd_toEndOf="@+id/vPassword"-->
-<!--        app:layout_constraintHorizontal_bias="0.45"-->
-<!--        app:layout_constraintStart_toStartOf="@+id/vPassword"-->
-<!--        app:layout_constraintTop_toTopOf="@+id/vPassword" />-->
-
-<!--    <Button-->
-<!--        android:id="@+id/btnSignUp"-->
-<!--        android:layout_width="300dp"-->
-<!--        android:layout_height="40dp"-->
-<!--        android:layout_marginTop="20dp"-->
-<!--        android:background="@drawable/border_button"-->
-<!--        android:fontFamily="@font/jost_regular"-->
-<!--        android:text="@string/sign_in"-->
-<!--        android:textColor="#CA4545"-->
-<!--        android:textSize="14sp"-->
-<!--        android:textStyle="bold"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.495"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/vPassword" />-->
-
-<!--    <Button-->
-<!--        android:id="@+id/btnSignInGoogle"-->
-<!--        android:layout_width="@dimen/_170sdp"-->
-<!--        android:layout_height="40dp"-->
-<!--        android:layout_marginTop="20dp"-->
-<!--        android:background="@drawable/border_button"-->
-<!--        android:drawableLeft="@drawable/google"-->
-<!--        android:fontFamily="@font/jost_regular"-->
-<!--        android:text="@string/sign_in_with_google"-->
-<!--        android:textColor="#CA4545"-->
-<!--        android:textSize="11sp"-->
-<!--        android:textStyle="bold"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/btnSignUp" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/tvSignUp"-->
-<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="15dp"-->
-<!--        android:fontFamily="@font/jost_regular"-->
-<!--        android:text="@string/new_user_sign_up_here"-->
-<!--        android:textColor="@color/white"-->
-<!--        android:textSize="14sp"-->
-<!--        android:textStyle="bold"-->
+<!--        android:layout_margin="@dimen/_20sdp"-->
 <!--        app:layout_constraintEnd_toEndOf="parent"-->
 <!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/btnSignInGoogle" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/tvForgotPassword"-->
-<!--        android:layout_width="wrap_content"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/etUserName" />-->
+<!--    <Button-->
+<!--        android:id="@+id/btnRegister"-->
+<!--        android:text="REGISTER"-->
+<!--        android:textSize="@dimen/_15sdp"-->
+<!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="140dp"-->
-<!--        android:fontFamily="@font/jost_regular"-->
-<!--        android:text="@string/forgot_password"-->
-<!--        android:textColor="@color/white"-->
-<!--        android:textSize="14sp"-->
-<!--        android:textStyle="bold"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        android:layout_margin="@dimen/_50sdp"-->
 <!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/btnSignInGoogle" />-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/btnLogin"/>-->
+<!--    <Button-->
+<!--        android:id="@+id/btnLogin"-->
+<!--        android:text="LOGIN"-->
+<!--        android:textSize="@dimen/_15sdp"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="@dimen/_50sdp"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/etPassword"/>-->
+
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:fontFamily="@font/jost_regular"
+        android:text="@string/quote"
+        android:textColor="#99F3EAEA"
+        android:textSize="@dimen/_12ssp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="32dp"
+        android:contentDescription="@string/logo"
+        android:src="@drawable/notes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <View
+        android:id="@+id/vEmail"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="26dp"
+        android:background="@drawable/view_border"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+    <EditText
+        android:id="@+id/edtEmail"
+        android:layout_width="270dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:background="@null"
+        android:fontFamily="@font/jost_regular"
+        android:gravity="center"
+        android:hint="@string/email"
+        android:importantForAutofill="no"
+        android:inputType="textEmailAddress"
+        android:maxLines="1"
+        android:textAlignment="center"
+        android:textColorHint="#4FFFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/vEmail"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/vEmail"
+        app:layout_constraintTop_toTopOf="@+id/vEmail" />
+
+    <View
+        android:id="@+id/vPassword"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/view_border"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vEmail" />
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="270dp"
+        android:layout_height="40dp"
+        android:background="@null"
+        android:fontFamily="@font/jost_regular"
+        android:hint="@string/password"
+        android:importantForAutofill="no"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        android:textAlignment="center"
+        android:textColorHint="#4FFFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/vPassword"
+        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintStart_toStartOf="@+id/vPassword"
+        app:layout_constraintTop_toTopOf="@+id/vPassword" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/border_button"
+        android:fontFamily="@font/jost_regular"
+        android:text="@string/sign_in"
+        android:textColor="#CA4545"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vPassword" />
+
+    <Button
+        android:id="@+id/btnSignInGoogle"
+        android:layout_width="@dimen/_170sdp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/border_button"
+        android:drawableLeft="@drawable/google"
+        android:fontFamily="@font/jost_regular"
+        android:text="@string/sign_in_with_google"
+        android:textColor="#CA4545"
+        android:textSize="11sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
+
+    <TextView
+        android:id="@+id/btnRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/jost_regular"
+        android:text="@string/new_user_sign_up_here"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSignInGoogle" />
+
+    <TextView
+        android:id="@+id/tvForgotPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="140dp"
+        android:fontFamily="@font/jost_regular"
+        android:text="@string/forgot_password"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSignInGoogle" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -24,6 +24,7 @@ public class Note implements Serializable {
     private int folderId;
     private int statusKey;
     private Date reminderTime;
+    private byte[] image;
 
     public int getId() {
         return id;
@@ -121,6 +122,14 @@ public class Note implements Serializable {
         this.reminderTime = reminderTime;
     }
 
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
     @NonNull
     @Override
     public String toString() {
@@ -132,6 +141,7 @@ public class Note implements Serializable {
                 ", lastUpdate=" + lastUpdate +
                 ", note='" + note + '\'' +
                 ", color='" + color + '\'' +
+                ", color='" + image + '\'' +
                 '}';
     }
 }
