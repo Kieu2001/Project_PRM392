@@ -34,7 +34,7 @@ public class AlarmBroadcast extends BroadcastReceiver {
         intent1.putExtra("note", note);
         intent1.putExtra("mode", Const.NoteDetailActivityMode.EDIT);
         //Notification Builder
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 2, intent1, PendingIntent.FLAG_IMMUTABLE);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 2, intent1, PendingIntent.FLAG_MUTABLE);
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context, "notify_001");
 
