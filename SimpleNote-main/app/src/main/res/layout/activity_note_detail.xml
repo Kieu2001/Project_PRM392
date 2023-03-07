@@ -14,12 +14,11 @@
         android:id="@+id/layoutNoteDetailHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/background_notedetail_headfooter"
         android:paddingStart="@dimen/_6sdp"
         android:paddingTop="@dimen/_5sdp"
         android:paddingEnd="@dimen/_6sdp"
         android:paddingBottom="@dimen/_5sdp"
-        android:padding="15dp"
-        android:background="@drawable/border_header"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -40,25 +39,13 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_toStartOf="@+id/right_right_icon"
-                android:src="@drawable/ic_baseline_push_pin_24"/>
-            <ImageView
-                android:id="@+id/right_right_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_toStartOf="@+id/imageFolderNoteBack"
-                android:src="@drawable/ic_baseline_add_alert_24"/>
+
             <ImageView
                 android:id="@+id/imageNoteDetailSave"
                 android:layout_width="@dimen/_20sdp"
                 android:layout_height="@dimen/_20sdp"
                 android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_baseline_save_alt_24" />
+                android:src="@drawable/ic_check" />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -105,21 +92,9 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editTextNoteTitle"
-               />
+                />
 
-<!--            <EditText-->
-<!--                android:id="@+id/editTextNoteContent"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:background="@null"-->
-<!--                android:hint="@string/note"-->
-<!--                android:importantForAutofill="no"-->
-<!--                android:inputType="textMultiLine"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/editTextNoteSubtitle"-->
-<!--                />-->
-            <Button
+            <EditText
                 android:id="@+id/editTextNoteContent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -127,12 +102,10 @@
                 android:hint="@string/note"
                 android:importantForAutofill="no"
                 android:inputType="textMultiLine"
-                android:minHeight="48dp"
-                android:textAlignment="textStart"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextNoteTitle" />
+                app:layout_constraintTop_toBottomOf="@+id/editTextNoteSubtitle"
+                />
         </LinearLayout>
     </ScrollView>
 
@@ -156,19 +129,13 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-            <ImageView
-                android:id="@+id/imageAdd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_baseline_add_box_24" />
+
             <ImageView
                 android:id="@+id/imageViewColorOptionLens"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/app_name"
-                android:layout_marginStart="15dp"
-                android:src="@drawable/ic_outline_color_lens_24" />
+                android:src="@drawable/ic_color_lens" />
         </LinearLayout>
 
         <TextView
