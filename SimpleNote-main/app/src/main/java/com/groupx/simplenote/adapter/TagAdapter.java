@@ -3,6 +3,7 @@ package com.groupx.simplenote.adapter;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -122,13 +123,13 @@ public class TagAdapter extends RecyclerView.Adapter<TagAdapter.TagViewHolder> {
             viewTagContainer = itemView.findViewById(R.id.viewTagContainer);
             textViewTagName = itemView.findViewById(R.id.textViewTagName);
             imageViewTagOption = itemView.findViewById(R.id.imageViewTagEditOption);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    int pos = getAdapterPosition();
-
-                }
-            });
+//            itemView.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    int pos = getAdapterPosition();
+//
+//                }
+//            });
         }
 
         void setTag(Tag tag) {

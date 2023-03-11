@@ -1,15 +1,25 @@
 package com.groupx.simplenote.activity;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -25,7 +35,12 @@ import com.groupx.simplenote.entity.NoteAccount;
 import com.groupx.simplenote.entity.NoteTag;
 import com.groupx.simplenote.fragment.ChoosingNoteColorFragment;
 import com.groupx.simplenote.fragment.NoteDetailOptionFragment;
+import com.groupx.simplenote.fragment.ReminderChooseOptionRefer;
+import com.groupx.simplenote.fragment.placeholder.NoteChooseOptionRefer;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
@@ -35,10 +50,11 @@ import java.util.Set;
 public class CreateNoteActivity extends AppCompatActivity {
 
     private ImageView imageNoteDetailBack, imageNoteDetailSave, imageNoteDetailColorOptionLens,
-            imageNoteDetailOption;
+            imageNoteDetailOption, imageViewAddOption;
     private EditText editTextNoteSubtitle, editTextNoteTitle, editTextNoteContent;
     private TextView textViewNoteDetailDatetime;
     private ConstraintLayout layoutNoteDetail;
+    private ImageView imgTakePhoto;
 
 
     private String selectedNoteColor;
@@ -67,6 +83,8 @@ public class CreateNoteActivity extends AppCompatActivity {
         imageNoteDetailSave = findViewById(R.id.imageNoteDetailSave);
         imageNoteDetailColorOptionLens = findViewById(R.id.imageViewColorOptionLens);
         imageNoteDetailOption = findViewById(R.id.imageNoteDetailOption);
+        imgTakePhoto = findViewById(R.id.imgTakePhotoInNote);
+        imageViewAddOption = findViewById(R.id.imageViewAddOption);
 
         editTextNoteTitle = findViewById(R.id.editTextNoteTitle);
         editTextNoteSubtitle = findViewById(R.id.editTextNoteSubtitle);
@@ -113,6 +131,15 @@ public class CreateNoteActivity extends AppCompatActivity {
             }
         });
 
+//        Bundle bundle = getIntent().getExtras();
+//        if (bundle != null) {
+//            bundle = null;
+//            byte[] img = getIntent().getByteArrayExtra("signNature");
+//            Bitmap bitmap = BitmapFactory.decodeByteArray(img, 0, img.length);
+//            imgTakePhoto.setImageBitmap(bitmap);
+//        }
+
+
         if (mode == Const.NoteDetailActivityMode.VIEW) {
             setOnlyView();
         }
@@ -120,6 +147,7 @@ public class CreateNoteActivity extends AppCompatActivity {
             alreadyNote = (Note) getIntent().getSerializableExtra("note");
             setViewAndEditNote();
         }
+        initChooseOptionRefer();
         initChooseColorOption();
         initOption();
     }
@@ -136,10 +164,21 @@ public class CreateNoteActivity extends AppCompatActivity {
         imageNoteDetailSave.setVisibility(View.GONE);
         imageNoteDetailColorOptionLens.setVisibility(View.GONE);
         imageNoteDetailOption.setVisibility(View.GONE);
+        imageViewAddOption.setVisibility(View.GONE);
 
         Utils.disableEditText(editTextNoteTitle);
         Utils.disableEditText(editTextNoteSubtitle);
         Utils.disableEditText(editTextNoteContent);
+    }
+
+    private void initChooseOptionRefer() {
+        NoteChooseOptionRefer option = new NoteChooseOptionRefer(this);
+        imageViewAddOption.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                option.show(getSupportFragmentManager(), "option");
+            }
+        });
     }
 
     private void initChooseColorOption() {
@@ -171,11 +210,16 @@ public class CreateNoteActivity extends AppCompatActivity {
         String title = editTextNoteTitle.getText().toString().trim();
         String subtitle = editTextNoteSubtitle.getText().toString().trim();
         String content = editTextNoteContent.getText().toString();
+        byte[] image = null;
+        if (imgTakePhoto.getDrawable() != null) {
+            image = ImageView_To_Byte(imgTakePhoto);
+        }
 
         final Note note = new Note();
         note.setTitle(title);
         note.setNote(content);
         note.setSubTitle(subtitle);
+        note.setImage(image);
         note.setColor(selectedNoteColor);
         note.setSince(new Date());
         note.setLastUpdate(new Date());
@@ -221,6 +265,11 @@ public class CreateNoteActivity extends AppCompatActivity {
         String title = editTextNoteTitle.getText().toString().trim();
         String subtitle = editTextNoteSubtitle.getText().toString().trim();
         String content = editTextNoteContent.getText().toString();
+        byte[] image = null;
+        if (imgTakePhoto.getDrawable() != null) {
+            image = ImageView_To_Byte(imgTakePhoto);
+        }
+
 
         if (alreadyNote == null) {
             alreadyNote = new Note();
@@ -231,6 +280,7 @@ public class CreateNoteActivity extends AppCompatActivity {
         alreadyNote.setSubTitle(subtitle);
         alreadyNote.setColor(selectedNoteColor);
         alreadyNote.setLastUpdate(new Date());
+        alreadyNote.setImage(image);
 
         NoteDatabase.getSNoteDatabase(getApplicationContext())
                 .noteDao().update(alreadyNote);
@@ -253,6 +303,10 @@ public class CreateNoteActivity extends AppCompatActivity {
         editTextNoteTitle.setText(alreadyNote.getTitle());
         editTextNoteSubtitle.setText(alreadyNote.getSubTitle());
         editTextNoteContent.setText(alreadyNote.getNote());
+        if (alreadyNote.getImage() != null) {
+            Bitmap bitmap = BitmapFactory.decodeByteArray(alreadyNote.getImage(), 0, alreadyNote.getImage().length);
+            imgTakePhoto.setImageBitmap(bitmap);
+        }
         selectedNoteColor = alreadyNote.getColor();
         if (selectedNoteColor == null) {
             selectedNoteColor = "#FFFFFF";
@@ -334,5 +388,66 @@ public class CreateNoteActivity extends AppCompatActivity {
         getIntent().putExtra("myRequestCode", Const.NoteRequestCode.REQUEST_CODE_DELETE);
         setResult(RESULT_OK, intent);
         finish();
+    }
+
+    public void requestCamPermision() {
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
+            if (checkSelfPermission(android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[] {Manifest.permission.CAMERA}, 8888);
+            }
+        }
+    }
+
+    public void takePhoto() {
+        requestCamPermision();
+        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(cameraIntent, 8888);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 8888 && resultCode == RESULT_OK) {
+            Bitmap photo = (Bitmap) data.getExtras().get("data");
+            imgTakePhoto.setImageBitmap(photo);
+        }
+
+        if (requestCode == 2001 && resultCode == RESULT_OK && data != null) {
+            Uri uri = data.getData();
+            try {
+                InputStream inputStream = getContentResolver().openInputStream(uri);
+                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                imgTakePhoto.setImageBitmap(bitmap);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    private byte[] ImageView_To_Byte(ImageView img) {
+        BitmapDrawable drawable = (BitmapDrawable) img.getDrawable();
+        Bitmap bmp = drawable.getBitmap();
+
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        byte[] byteArray = stream.toByteArray();
+        return byteArray;
+    }
+
+    public void choosePhoto() {
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");
+        startActivityForResult(intent, 2001);
+    }
+
+    public void drawing() {
+        Intent intent = new Intent(CreateNoteActivity.this, Drawing.class);
+        //startActivityForResult(intent, 0406);
+        startActivity(intent);
     }
 }

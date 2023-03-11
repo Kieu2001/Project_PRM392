@@ -203,6 +203,17 @@ public class CreateReminderActivity extends AppCompatActivity {
             reminderTime = timeFormat.format(alreadyNote.getReminderTime());
             edtReminderTime.setText(reminderTime);
         }
+
+//        Bundle bundle = getIntent().getExtras();
+//        if (bundle != null) {
+//            bundle = null;
+//            byte[] img = getIntent().getByteArrayExtra("signNature");
+//            Bitmap bitmap = BitmapFactory.decodeByteArray(img, 0, img.length);
+//            imgTakePhoto.setImageBitmap(bitmap);
+//        }
+
+
+
         initChooseOptionRefer();
         initChooseColorOption();
         initOption();
@@ -270,7 +281,11 @@ public class CreateReminderActivity extends AppCompatActivity {
         String title = editTextNoteTitle.getText().toString().trim();
         String subtitle = editTextNoteSubtitle.getText().toString().trim();
         String content = editTextNoteContent.getText().toString();
-        byte[] image = ImageView_To_Byte(imgTakePhoto);
+        byte[] image = null;
+        if (imgTakePhoto.getDrawable() != null) {
+            image = ImageView_To_Byte(imgTakePhoto);
+        }
+
 
 
         final Note note = new Note();
@@ -356,10 +371,8 @@ public class CreateReminderActivity extends AppCompatActivity {
             Date timeReminder = format.parse(reminderTime);
             alreadyNote.setReminderTime(timeReminder);
         } catch (ParseException e) {
-            //Log.d("AAA", "Da den day 1");
             e.printStackTrace();
         }
-        //System.out.println("Da den day 1");
 
         NoteDatabase.getSNoteDatabase(getApplicationContext())
                 .noteDao().update(alreadyNote);
@@ -384,8 +397,11 @@ public class CreateReminderActivity extends AppCompatActivity {
     }
 
     private void setViewAndEditNote() {
-        Bitmap bitmap = BitmapFactory.decodeByteArray(alreadyNote.getImage(), 0, alreadyNote.getImage().length);
-        imgTakePhoto.setImageBitmap(bitmap);
+        if (alreadyNote.getImage() != null) {
+            Bitmap bitmap = BitmapFactory.decodeByteArray(alreadyNote.getImage(), 0, alreadyNote.getImage().length);
+            imgTakePhoto.setImageBitmap(bitmap);
+        }
+
         editTextNoteTitle.setText(alreadyNote.getTitle());
         editTextNoteSubtitle.setText(alreadyNote.getSubTitle());
         editTextNoteContent.setText(alreadyNote.getNote());
@@ -497,6 +513,13 @@ public class CreateReminderActivity extends AppCompatActivity {
             imgTakePhoto.setImageBitmap(photo);
         }
 
+//        if (requestCode == 0406 && requestCode == RESULT_OK && data != null) {
+//            byte[] drawable = data.getByteArrayExtra("signNature");
+//            Bitmap bitmap = BitmapFactory.decodeByteArray(drawable, 0, drawable.length);
+//            imgTakePhoto.setImageBitmap(bitmap);
+//            System.out.println("Da vo day");
+//        }
+
         if (requestCode == 2001 && resultCode == RESULT_OK && data != null) {
             Uri uri = data.getData();
             try {
@@ -528,5 +551,11 @@ public class CreateReminderActivity extends AppCompatActivity {
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");
         startActivityForResult(intent, 2001);
+    }
+
+    public void drawing() {
+        Intent intent = new Intent(CreateReminderActivity.this, Drawing.class);
+        //startActivityForResult(intent, 0406);
+        startActivity(intent);
     }
 }

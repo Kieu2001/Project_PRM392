@@ -35,9 +35,10 @@ public class CheckingEmailActivity extends AppCompatActivity {
                     synchronized (this) {
                         try {
                             wait(10000);
-                            buttonSendEmail(capcha);
+                            //buttonSendEmail(capcha);
                             Intent intent = new Intent(CheckingEmailActivity.this, ResetPasswordActivity.class);
                             intent.putExtra("capcha", capcha);
+                            intent.putExtra("email", getIntent().getExtras().getString("Email"));
                             startActivity(intent);
                             break;
                         } catch (Exception ex) {

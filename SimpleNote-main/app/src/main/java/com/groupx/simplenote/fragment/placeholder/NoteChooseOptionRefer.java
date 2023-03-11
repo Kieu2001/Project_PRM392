@@ -1,4 +1,4 @@
-package com.groupx.simplenote.fragment;
+package com.groupx.simplenote.fragment.placeholder;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,13 +10,14 @@ import androidx.annotation.Nullable;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.groupx.simplenote.R;
+import com.groupx.simplenote.activity.CreateNoteActivity;
 import com.groupx.simplenote.activity.CreateReminderActivity;
 
-public class ReminderChooseOptionRefer extends BottomSheetDialogFragment {
-    private CreateReminderActivity activity;
+public class NoteChooseOptionRefer extends BottomSheetDialogFragment {
+    private CreateNoteActivity activity;
     private View layoutTakePhoto, layoutChoosePhoto, layoutDrawAble;
 
-    public ReminderChooseOptionRefer(CreateReminderActivity activity) {
+    public NoteChooseOptionRefer(CreateNoteActivity activity) {
         super();
         this.activity = activity;
     }

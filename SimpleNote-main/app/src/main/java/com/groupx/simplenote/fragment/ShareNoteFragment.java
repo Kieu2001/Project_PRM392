@@ -95,4 +95,16 @@ public class ShareNoteFragment extends BottomSheetDialogFragment {
         activity.shareNote(account.getId(), permission);
     }
 
+    /*
+    Tuấn Anh: Login, Logout, Register, ForgotPassword, Drawing, TakePhoto and Choose photo, Share
+    Mạnh Hùng: Archive, Delete,
+    Đại Lương: Note, favorite note, Background
+    Minh Hiếu: Timer trong note, Hiển thị lại note nếu như đến hạn,
+    Đạt: Sheete button in whole app, folder, tag, settings(Focus set lock)
+
+
+
+    *
+     */
+
 }

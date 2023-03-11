@@ -50,6 +50,7 @@ public class ForgotPassWordActivity extends AppCompatActivity {
             return;
         }
         Intent intent = new Intent(ForgotPassWordActivity.this,CheckingEmailActivity.class);
+        intent.putExtra("Email", email);
         startActivity(intent);
 //        auth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
 //            @Override

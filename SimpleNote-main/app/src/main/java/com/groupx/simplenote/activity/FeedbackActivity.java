@@ -68,8 +68,6 @@ public class FeedbackActivity extends AppCompatActivity {
         }
         if(comment.trim().isEmpty()){
             Toast.makeText(getApplicationContext(), "Empty Comment!", Toast.LENGTH_SHORT).show();
-//            ((TextInputLayout)findViewById(R.id.inputLayoutTextFeedbackComment))
-//                    .setError("Empty Comment");
         }
         if(!name.isEmpty() && !email.isEmpty() && !comment.trim().isEmpty()){
             sendEmail(email, name, comment);
