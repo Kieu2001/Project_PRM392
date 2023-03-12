@@ -132,11 +132,12 @@ public class CreateNoteActivity extends AppCompatActivity {
         });
 
 //        Bundle bundle = getIntent().getExtras();
-//        if (bundle != null) {
-//            bundle = null;
+//        String a = bundle.getString("checkNull");
+//        if (a == "NotNull") {
 //            byte[] img = getIntent().getByteArrayExtra("signNature");
 //            Bitmap bitmap = BitmapFactory.decodeByteArray(img, 0, img.length);
 //            imgTakePhoto.setImageBitmap(bitmap);
+//            bundle.clear();
 //        }
 
 
@@ -447,6 +448,7 @@ public class CreateNoteActivity extends AppCompatActivity {
 
     public void drawing() {
         Intent intent = new Intent(CreateNoteActivity.this, Drawing.class);
+        intent.putExtra("res", "1");
         //startActivityForResult(intent, 0406);
         startActivity(intent);
     }

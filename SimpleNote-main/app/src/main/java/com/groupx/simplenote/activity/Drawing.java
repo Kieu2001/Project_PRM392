@@ -52,6 +52,8 @@ public class Drawing extends AppCompatActivity {
         defaultColor = ContextCompat.getColor(Drawing.this, R.color.black);
         imgSave = findViewById(R.id.btnSave);
 
+        String res = getIntent().getExtras().getString("res");
+
 
         askPermission();
 
@@ -90,17 +92,32 @@ public class Drawing extends AppCompatActivity {
         imgSave.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Drawing.this, CreateReminderActivity.class);
-                Bitmap bm = signatureView.getSignatureBitmap();
-                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                bm.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                byte[] byteArray = stream.toByteArray();
-                Bundle bundle = new Bundle();
-                bundle.putString("checkNull","NotNull");
-                intent.putExtras(bundle);
-                intent.putExtra("signNature", byteArray);
-                bundle.clear();
-                startActivity(intent);
+                if (res.matches("2")) {
+                    Intent intent = new Intent(Drawing.this, CreateReminderActivity.class);
+                    Bitmap bm = signatureView.getSignatureBitmap();
+                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                    bm.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                    byte[] byteArray = stream.toByteArray();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("checkNull","NotNull");
+                    //intent.putExtras(bundle);
+                    intent.putExtra("signNature", byteArray);
+                    bundle.clear();
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(Drawing.this, CreateNoteActivity.class);
+                    Bitmap bm = signatureView.getSignatureBitmap();
+                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                    bm.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                    byte[] byteArray = stream.toByteArray();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("checkNull","NotNull");
+                    intent.putExtras(bundle);
+                    intent.putExtra("signNature", byteArray);
+                    bundle.clear();
+                    startActivity(intent);
+                }
+
 
             }
         }));

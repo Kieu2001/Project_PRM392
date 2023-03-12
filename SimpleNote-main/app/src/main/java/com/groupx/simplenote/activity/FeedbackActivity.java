@@ -78,9 +78,9 @@ public class FeedbackActivity extends AppCompatActivity {
         String emailTeam = getString(R.string.team_email);
         String[] TO = {emailTeam};
         String[] CC = {email, emailTeam };
-        Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+        Intent emailIntent = new Intent(Intent.ACTION_SEND);
 
-        emailIntent.setType("*/*");
+        emailIntent.setType("message/rfc822");
         emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
         emailIntent.putExtra(Intent.EXTRA_CC, CC);
 
@@ -91,6 +91,7 @@ public class FeedbackActivity extends AppCompatActivity {
 
         try {
             startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+            //startActivity(emailIntent);
             finish();
         } catch (android.content.ActivityNotFoundException ex) {
             Toast.makeText(this, "There is no email client installed.", Toast.LENGTH_SHORT).show();

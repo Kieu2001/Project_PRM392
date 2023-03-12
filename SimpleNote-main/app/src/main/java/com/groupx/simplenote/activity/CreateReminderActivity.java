@@ -204,12 +204,12 @@ public class CreateReminderActivity extends AppCompatActivity {
             edtReminderTime.setText(reminderTime);
         }
 
-//        Bundle bundle = getIntent().getExtras();
+//        Bundle bundle = getIntent().getBundleExtra("checkNull");
 //        if (bundle != null) {
-//            bundle = null;
 //            byte[] img = getIntent().getByteArrayExtra("signNature");
 //            Bitmap bitmap = BitmapFactory.decodeByteArray(img, 0, img.length);
 //            imgTakePhoto.setImageBitmap(bitmap);
+//            bundle.clear();
 //        }
 
 
@@ -555,6 +555,7 @@ public class CreateReminderActivity extends AppCompatActivity {
 
     public void drawing() {
         Intent intent = new Intent(CreateReminderActivity.this, Drawing.class);
+        intent.putExtra("res", "2");
         //startActivityForResult(intent, 0406);
         startActivity(intent);
     }

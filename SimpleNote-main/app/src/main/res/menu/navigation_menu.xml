@@ -26,10 +26,12 @@
 
     <item
         android:id="@+id/itemTestFeedback"
+        android:icon="@drawable/ic_outline_feedback_24"
         android:title="Create Feedback" />
 
     <item
         android:id="@+id/itemTestSwm"
+        android:icon="@drawable/ic_ios_share"
         android:title="Share with me" />
 
     <item
