@@ -100,7 +100,7 @@ public class Drawing extends AppCompatActivity {
                     byte[] byteArray = stream.toByteArray();
                     Bundle bundle = new Bundle();
                     bundle.putString("checkNull","NotNull");
-                    //intent.putExtras(bundle);
+                    intent.putExtras(bundle);
                     intent.putExtra("signNature", byteArray);
                     bundle.clear();
                     startActivity(intent);
@@ -111,14 +111,12 @@ public class Drawing extends AppCompatActivity {
                     bm.compress(Bitmap.CompressFormat.PNG, 100, stream);
                     byte[] byteArray = stream.toByteArray();
                     Bundle bundle = new Bundle();
-                    bundle.putString("checkNull","NotNull");
+                    bundle.putString("checkNull", "NotNull");
                     intent.putExtras(bundle);
                     intent.putExtra("signNature", byteArray);
                     bundle.clear();
                     startActivity(intent);
                 }
-
-
             }
         }));
 

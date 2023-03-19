@@ -210,6 +210,12 @@ public class CreateReminderActivity extends AppCompatActivity {
 //            Bitmap bitmap = BitmapFactory.decodeByteArray(img, 0, img.length);
 //            imgTakePhoto.setImageBitmap(bitmap);
 //            bundle.clear();
+//        }Bundle bundle = getIntent().getBundleExtra("checkNull");
+//        if (bundle != null) {
+//            byte[] img = getIntent().getByteArrayExtra("signNature");
+//            Bitmap bitmap = BitmapFactory.decodeByteArray(img, 0, img.length);
+//            imgTakePhoto.setImageBitmap(bitmap);
+//            bundle.clear();
 //        }
 
 

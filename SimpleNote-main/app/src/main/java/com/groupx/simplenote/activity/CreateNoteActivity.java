@@ -131,14 +131,15 @@ public class CreateNoteActivity extends AppCompatActivity {
             }
         });
 
-//        Bundle bundle = getIntent().getExtras();
-//        String a = bundle.getString("checkNull");
-//        if (a == "NotNull") {
-//            byte[] img = getIntent().getByteArrayExtra("signNature");
-//            Bitmap bitmap = BitmapFactory.decodeByteArray(img, 0, img.length);
-//            imgTakePhoto.setImageBitmap(bitmap);
-//            bundle.clear();
-//        }
+        Bundle bundle = getIntent().getExtras();
+        String a = null;
+        a = bundle.getString("checkNull");
+        if (a != null) {
+            byte[] img = getIntent().getByteArrayExtra("signNature");
+            Bitmap bitmap = BitmapFactory.decodeByteArray(img, 0, img.length);
+            imgTakePhoto.setImageBitmap(bitmap);
+            bundle.clear();
+        }
 
 
         if (mode == Const.NoteDetailActivityMode.VIEW) {
